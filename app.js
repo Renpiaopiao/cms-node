@@ -9,6 +9,11 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// 添加controller和service中间件
+const {controller,service} = require('./extend')
+app.use(controller(app))
+app.use(service(app))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
