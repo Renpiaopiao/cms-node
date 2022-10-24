@@ -12,6 +12,7 @@ class Controller {
 
 exports.Controller = Controller
 
+// 获取controller文件夹下的所有文件
 const loadConroller = controllerPath => {
     const controllerMap  = {}
     const files =fs.readFileSync(controllerPath)
@@ -24,7 +25,7 @@ const loadConroller = controllerPath => {
                 ...loadConroller(path.join(controllerPath,file))
             }
         }else{ 
-            const controllerMap = file.substr(0,file.lastIndexof('.'))
+            const controllerName = file.substr(0,file.lastIndexof('.'))
             if(controllerName){
                 controllerMap[controllerMap] = {
                     isDir:false,
